@@ -82,17 +82,18 @@ class Array
 
     def my_flatten
         if self.is_a?(Array) == false
-            return [self]
+            return self.to_a
         end
         arr = []
 
         i = 0
         while i < self.length
             if self.is_a?(Array) == false
-                arr << self[i]
+                arr += self[i]
             else
-                my_flatten(self[i])
+                self[i].my_flatten
             end
+            i += 1
         end
 
         arr
