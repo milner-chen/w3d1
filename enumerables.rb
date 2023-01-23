@@ -18,12 +18,42 @@ class Array
 
 #    p return_value
 
-    def my_select(&prc)
-        my_each(prc)
+    # def my_select(&prc)
+    #     arr = []
+    #     self.my_each(&prc)
+
+    #     return arr
+
+    # end
+
+
+    
+# a = [1, 2, 3]
+# p a.my_select { |num| num > 1 } # => [2, 3]
+# p a.my_select { |num| num == 4 } # => []
+
+
+    def my_reject(&prc)
+        arr = []
+
+        i = 0
+        while i < self.length
+            if prc.call(self[i]) == false
+                arr << self[i]
+            end
+            i += 1
+        end
+
+        return arr
     end
+
+    
+# a = [1, 2, 3]
+# p a.my_reject { |num| num > 1 } # => [1]
+# p a.my_reject { |num| num == 4 } # => [1, 2, 3]
+
+
 
 end
 
-a = [1, 2, 3]
-a.my_select { |num| num > 1 } # => [2, 3]
-a.my_select { |num| num == 4 } # => []
+
